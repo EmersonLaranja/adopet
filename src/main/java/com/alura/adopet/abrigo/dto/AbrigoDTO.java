@@ -1,6 +1,17 @@
 package com.alura.adopet.abrigo.dto;
 
-public record AbrigoDTO(String id, String nome, Endereco endereco, String telefone, String email, String site,
-        String descricao) {
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+
+public record AbrigoDTO(
+        @NotBlank(message = "O id do abrigo é obrigatório") String id,
+        @NotBlank(message = "O nome do abrigo é obrigatório") String nome,
+        @NotBlank(message = "O telefone do abrigo é obrigatório") @Pattern(regexp = "\\d{9,11}") String telefone,
+        @NotBlank(message = "O email do abrigo é obrigatório") @Email String email,
+        @NotBlank(message = "A senha do abrigo é obrigatório") String senha,
+        String foto,
+        String sobre,
+        EnderecoDTO endereco) {
 
 }

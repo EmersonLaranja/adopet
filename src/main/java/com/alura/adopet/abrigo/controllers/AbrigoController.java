@@ -4,8 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.alura.adopet.abrigo.dto.AbrigoDTO;
 
 @RestController
 @RequestMapping("/abrigo")
@@ -14,8 +18,12 @@ public class AbrigoController {
     List<String> abrigos = new ArrayList<String>(); // repository inMemory
 
     @GetMapping
-    public List<String> listar() {
-        abrigos.add("Abrigo 1");
+    public List<String> listarAbrigos() {
         return abrigos;
+    }
+
+    @PostMapping
+    public void criarAbrigo(@RequestBody AbrigoDTO dadosAbrigo) {
+        
     }
 }

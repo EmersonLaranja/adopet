@@ -1,0 +1,6 @@
+CREATE TABLE enderecos (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    cidade VARCHAR(255) NOT NULL,
+    estado VARCHAR(255) NOT NULL
+    
+);
