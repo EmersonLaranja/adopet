@@ -1,24 +1,43 @@
 package com.alura.adopet.abrigo.entities;
 
-import org.springframework.data.annotation.Id;
+import com.alura.adopet.abrigo.dto.AbrigoDTO;
 
-import jakarta.persistence.Embedded;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "abrigos")
+
 public class Abrigo {
         private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) Long id;
         private String nome;
-        private @Embedded Endereco endereco;
+        @OneToOne(cascade = { CascadeType.PERSIST })
+        @JoinColumn(name = "endereco_id")
+        private Endereco endereco;
         private String telefone;
         private String email;
         private String senha;
         private String foto;
         private String sobre;
+
+        public Abrigo() {
+        }
+
+        public Abrigo(AbrigoDTO dadosAbrigo) {
+                this.nome = dadosAbrigo.nome();
+                this.endereco = new Endereco(dadosAbrigo.endereco());
+                this.email = dadosAbrigo.email();
+                this.senha = dadosAbrigo.senha();
+                this.sobre = dadosAbrigo.sobre();
+                this.telefone = dadosAbrigo.telefone();
+                this.foto = dadosAbrigo.foto();
+        }
 
         public Long getId() {
                 return id;

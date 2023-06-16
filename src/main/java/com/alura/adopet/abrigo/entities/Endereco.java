@@ -1,18 +1,49 @@
 package com.alura.adopet.abrigo.entities;
 
-import org.springframework.data.annotation.Id;
+import com.alura.adopet.abrigo.dto.EnderecoDTO;
 
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-@Embeddable
 @Entity
 @Table(name = "enderecos")
-public record Endereco(@Id @GeneratedValue(strategy = GenerationType.IDENTITY) Long id,
-                String cidade,
-                String estado) {
+public class Endereco {
+        private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) Long id;
+        private String cidade;
+        private String estado;
 
+        public Endereco() {
+        }
+
+        public Endereco(EnderecoDTO endereco) {
+                this.cidade = endereco.cidade();
+                this.estado = endereco.estado();
+        }
+
+        public Long getId() {
+                return id;
+        }
+
+        public void setId(Long id) {
+                this.id = id;
+        }
+
+        public String getCidade() {
+                return cidade;
+        }
+
+        public void setCidade(String cidade) {
+                this.cidade = cidade;
+        }
+
+        public String getEstado() {
+                return estado;
+        }
+
+        public void setEstado(String estado) {
+                this.estado = estado;
+        }
 }
