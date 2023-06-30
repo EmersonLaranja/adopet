@@ -1,6 +1,6 @@
 package com.alura.adopet.abrigo.entities;
 
-import com.alura.adopet.abrigo.dto.AbrigoDTO;
+import com.alura.adopet.abrigo.dto.CriaAbrigoDTO;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -29,7 +29,7 @@ public class Abrigo {
         public Abrigo() {
         }
 
-        public Abrigo(AbrigoDTO dadosAbrigo) {
+        public Abrigo(CriaAbrigoDTO dadosAbrigo) {
                 this.nome = dadosAbrigo.nome();
                 this.endereco = new Endereco(dadosAbrigo.endereco());
                 this.email = dadosAbrigo.email();

@@ -1,6 +1,6 @@
 package com.alura.adopet.abrigo.entities;
 
-import com.alura.adopet.abrigo.dto.EnderecoDTO;
+import com.alura.adopet.abrigo.dto.CriaEnderecoDTO;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,7 +18,7 @@ public class Endereco {
         public Endereco() {
         }
 
-        public Endereco(EnderecoDTO endereco) {
+        public Endereco(CriaEnderecoDTO endereco) {
                 this.cidade = endereco.cidade();
                 this.estado = endereco.estado();
         }

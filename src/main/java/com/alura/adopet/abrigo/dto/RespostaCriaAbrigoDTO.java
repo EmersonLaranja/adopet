@@ -1,21 +1,21 @@
-package com.alura.adopet.abrigo.dao;
+package com.alura.adopet.abrigo.dto;
 
 import com.alura.adopet.abrigo.entities.Abrigo;
 
-public record AbrigoDAO(
+public record RespostaCriaAbrigoDTO(
         Long id,
         String nome,
         String telefone,
         String email,
         String foto,
         String sobre,
-        EnderecoDAO endereco) {
+        RespostaCriaEnderecoDTO endereco) {
 
-    public AbrigoDAO(Abrigo abrigo) {
+    public RespostaCriaAbrigoDTO(Abrigo abrigo) {
         this(abrigo.getId(), abrigo.getNome(), abrigo.getTelefone(), abrigo.getEmail(),
                 abrigo.getFoto(),
                 abrigo.getSobre(),
-                new EnderecoDAO(abrigo.getEndereco()));
+                new RespostaCriaEnderecoDTO(abrigo.getEndereco()));
 
     }
 
