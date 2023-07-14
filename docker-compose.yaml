@@ -12,13 +12,11 @@ services:
     expose:
       - '3306'
     volumes:
-      - my-db:/var/lib/mysql
-
+      - ./init/mysql:/docker-entrypoint-initdb.d
   adminer:
     image: adminer
     restart: always
+    depends_on:
+      - db
     ports:
       - 9000:8080
-
-volumes:
-  my-db:
