@@ -1,5 +1,6 @@
 package com.alura.adopet.abrigo.entities;
 
+import com.alura.adopet.abrigo.dto.AtualizaAbrigoDTO;
 import com.alura.adopet.abrigo.dto.CriaAbrigoDTO;
 
 import jakarta.persistence.CascadeType;
@@ -37,6 +38,17 @@ public class Abrigo {
                 this.sobre = dadosAbrigo.sobre();
                 this.telefone = dadosAbrigo.telefone();
                 this.foto = dadosAbrigo.foto();
+        }
+
+        public void atualizaAbrigo(AtualizaAbrigoDTO dadosAbrigo) {
+                this.nome = dadosAbrigo.nome();
+                this.endereco = new Endereco(dadosAbrigo.endereco());
+                this.email = dadosAbrigo.email();
+                this.senha = dadosAbrigo.senha();
+                this.sobre = dadosAbrigo.sobre();
+                this.telefone = dadosAbrigo.telefone();
+                this.foto = dadosAbrigo.foto();
+
         }
 
         public Long getId() {

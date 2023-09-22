@@ -18,6 +18,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import com.alura.adopet.abrigo.dto.AtualizaAbrigoDTO;
 import com.alura.adopet.abrigo.dto.CriaAbrigoDTO;
+import com.alura.adopet.abrigo.dto.RespostaAtualizaAbrigoDTO;
 import com.alura.adopet.abrigo.dto.RespostaCriaAbrigoDTO;
 import com.alura.adopet.abrigo.entities.Abrigo;
 import com.alura.adopet.abrigo.repositories.AbrigoRepository;
@@ -59,18 +60,17 @@ public class AbrigoController {
         }
     }
 
-    // @PutMapping("/{id}")
-    // public ResponseEntity atualizaAbrigo(@RequestBody @Valid AtualizaAbrigoDTO
-    // dadosAbrigo,
-    // UriComponentsBuilder uriBuilder, @PathVariable Long id) {
+    @PutMapping("/{id}")
+    public ResponseEntity atualizaAbrigo(@RequestBody @Valid AtualizaAbrigoDTO dadosAbrigo,
+            UriComponentsBuilder uriBuilder, @PathVariable Long id) {
 
-    // var abrigo = repository.getReferenceById(id);
-    // repository.save(abrigo);
-    // var uri =
-    // uriBuilder.path("/abrigo/{id}").buildAndExpand(abrigo.getId()).toUri();
-    // return ResponseEntity.created(uri).body(new RespostaCriaAbrigoDTO(abrigo));
+        var abrigo = repository.getReferenceById(id);
+        abrigo.atualizaAbrigo(dadosAbrigo);
+        repository.save(abrigo);
+        var uri = uriBuilder.path("/abrigo/{id}").buildAndExpand(abrigo.getId()).toUri();
+        return ResponseEntity.created(uri).body(new RespostaAtualizaAbrigoDTO(abrigo));
 
-    // }
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Abrigo> deletarAbrigoPorId(@PathVariable Long id) {
